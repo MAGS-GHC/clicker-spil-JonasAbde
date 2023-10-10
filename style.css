@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    user-select: none;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    background-color: rgb(103, 103, 222);
+    padding: 20px 0;
+}
+
+.score{
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgb(255, 255, 255);
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: black;
+}
+
+.cookie-container {
+    height: 320px;
+}
+
+.cookie{
+    width: 300px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 2px white);
+    animation: rotates 100s linear infinite;
+}
+@keyframes rotates { /* cookie roterer */
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
