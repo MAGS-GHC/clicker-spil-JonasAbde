@@ -8,7 +8,7 @@
     user-select: none;
 }
 /* container */
-.container {
+.container { 
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -29,8 +29,10 @@
     background-color: black;
 }
 
-.cookie-container {
-    height: 320px;
+
+/* cookie-container */
+.cookie-container { /* cookie container */
+    height: 320px; /* cookie container højde */
 }
 /* cookie */
 .cookie{
