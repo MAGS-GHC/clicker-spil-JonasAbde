@@ -55,8 +55,8 @@ const createParticle = (x,y) =>  { /* x og y er koordinaterne på musen */
     const particle = document.createElement("img"); /* opretter et billede */
     particle.setAttribute("src", "img/cookie.png"); /* sætter src på billedet */
     particle.setAttribute("class", "cookie-particle");  /* sætter class på billedet */
-    particle.style.top = x + "px"; /* sætter top på billedet */
-    particle.style.left = y + "px"; /* sætter left på billedet */
+    particle.style.top = y + "px"; /* sætter top på billedet */
+    particle.style.left = x + "px"; /* sætter left på billedet */
 
     cookieClicks.appendChild(particle); /* tilføjer billedet til cookie-clicks */
 
@@ -82,7 +82,8 @@ const autoClickCookie = () => { /* opretter en cookie hvert sekund */
     }, 1000) /* 1000 er 1 sekund */
 }
 
-autoClick.addEventListener("click", () => { /* opretter en cookie hvert sekund */
+/* opretter powerups */
+autoClick.addEventListener("click", () => {  /* opretter en cookie hvert sekund */
     const price = autoClick.getAttribute("data-price"); /* henter prisen på poweruppen */
     const score = document.querySelector("#score span");  /* henter scoren */
     const scoreValue = parseInt(score.innerText); /* laver scoren om til et tal */

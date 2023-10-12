@@ -14,21 +14,20 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 50px;
-    background-color: rgb(103, 103, 222);
+    gap: 0px;
     padding: 20px 0;
 }
+
+
 /* score */
 .score{
-    font-size: 4rem;
-    font-weight: bold;
-    text-shadow: 0 0 10px rgb(255, 255, 255);
+    font-size: 6rem;
+    font-weight: BOLD;
+    text-shadow: 0 0 15px rgb(255, 255, 255);
     width: 100%;
     text-align: center;
     color: white;
-    background-color: black;
 }
-
 
 /* cookie-container */
 .cookie-container { /* cookie container */
@@ -38,8 +37,8 @@
 .cookie{
     width: 300px;
     cursor: pointer;
-    filter: drop-shadow(0 0 2px white);
-    animation: rotates 100s linear infinite;
+    filter: drop-shadow(0 0 px white);
+    animation: rotates 10s linear infinite;
 }
 /* cookie:hover */
 .cookie:active {
@@ -47,10 +46,11 @@
 }   
 
 .cookie-particle {
-    width: 30px;
+    width: 50px;
     position: absolute;
     top: -30px;
     left: 30px;
+    word-spacing: 10px;
     pointer-events: none;
     animation: cookie-up 2s linear forwards;
 }
@@ -61,7 +61,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color:rgb(0, 0,0, .4);
     margin-bottom: 20px;
     gap: 50px;
 }
@@ -92,7 +91,7 @@
 
 .powerup .price{
     font-size: 1.1rem;
-    color: aquamarine;
+    color: rgb(0, 5, 3);
 }
 
 .fejl{
