@@ -1,109 +1,190 @@
-const cookie = document.querySelector("#cookie"); /* henter cookie */
-const autoClick = document.querySelector("#auto-click"); /* henter auto-click */
-const autoClickTextprice = document.querySelector("#auto-click .price"); /* henter auto-click prisen */
+const cookie = document.querySelector("#cookie");
+const autoClick = document.querySelector("#auto-click");
+const autoClickTextPrice = document.querySelector("#auto-click .price span");
+const upgradeClick = document.querySelector("#upgrade-click");
+const upgradeClickTextPrice = document.querySelector("#upgrade-click .price span");
 
-/* opretter en cookie i ens pung */
-const updateScore = cookies => { /* cookies er antallet af cookies */
-  const title = document.querySelector("title"); /* navn på siden */
-  const score = document.querySelector("#score span"); /* henter scoren */
+const updateScore = cookies => {
+    const title = document.querySelector("title");
+    const score = document.querySelector("#score span");
 
-  score.innerHTML = cookies; /* opdaterer scoren */
-  title.innerHTML = cookies + " cookies - Cookie Clicker";  /* opdaterer navnet på siden */
+    score.innerText = cookies;
+    title.innerHTML = cookies + " cookies - Cookie Clicker"
 
-  localStorage.setItem("cookies", cookies); /* gemmer cookies i localstorage */
+    localStorage.setItem("cookies", cookies);
 }
 
+const updatePowerupsStorage = powerup => {
+    let powerups = JSON.parse(localStorage.getItem("powerups")) || [];
+    powerups.push(powerup);
 
-const updatePowerupsStorage = powerup => { /* powerup er navnet på poweruppen */
-    let powerups = JSON.parse(localStorage.getItem("powerup")) || []; /* hvis der ikke er nogen powerups, så er det et tomt array */
-    powerups.push(powerup); /* tilføjer poweruppen til arrayet */
-
-    localStorage.setItem("powerup", JSON.stringify(powerups)); /* gemmer poweruppen i localstorage */
+    localStorage.setItem("powerups", JSON.stringify(powerups));
 }
 
-/* opretter en cookie i ens pung */
 const getStorage = () => {
-    const cookies = localStorage.getItem("cookies") || 0; /* hvis der ikke er nogen cookies, så er det 0 */
-    const powerup =JSON.parse(localStorage.getItem("powerup")) || []; /* hvis der ikke er nogen powerups, så er det et tomt array */
+    const cookies = localStorage.getItem("cookies") || 0;
+    const powerups = JSON.parse(localStorage.getItem("powerups")) || [];
 
-    const storage = { /* opretter et objekt */
-        "cookies": cookies, /* cookies er antallet af cookies */
-        "powerup": powerup /* powerup er navnet på poweruppen */
+    const storage = {
+        "cookies": cookies,
+        "powerups": powerups
     }
-    
-    return storage; /* returnerer storage */
 
-}
-/* gemmer hver gang man klikker på en cookie i ens pung */
-const cookieClicked = cookies => { /* cookies er antallet af cookies */
-    const storage = getStorage(); /* henter cookie storage */
-
-    const score = document.querySelector("#score span"); /* henter scoren */
-    const scoreValue = cookies ? cookies : parseInt(score.innerHTML); /* hvis der er cookies, så er det cookies, ellers er det scoren */
-
-    let newScore; /* opretter en ny score */
-
-    newScore = scoreValue + 1; /* ligger 1 til scoren */
-
-    updateScore(newScore); /* opdaterer scoren */
+    return storage;
 }
 
-/* opretter effekterne af powerups */
-const createParticle = (x,y) =>  { /* x og y er koordinaterne på musen */
-    const cookieClicks = document.querySelector(".cookie-clicks"); /* henter cookie-clicks */
+const cookieClicked = cookies => {
+    const storage = getStorage();
 
-    const particle = document.createElement("img"); /* opretter et billede */
-    particle.setAttribute("src", "img/cookie.png"); /* sætter src på billedet */
-    particle.setAttribute("class", "cookie-particle");  /* sætter class på billedet */
-    particle.style.top = y + "px"; /* sætter top på billedet */
-    particle.style.left = x + "px"; /* sætter left på billedet */
+    const score = document.querySelector("#score span");
+    const scoreValue = cookies ? cookies : parseInt(score.innerText);
 
-    cookieClicks.appendChild(particle); /* tilføjer billedet til cookie-clicks */
+    let newScore;
 
-    setTimeout(() => { /* fjerner billedet efter 3 sekunder */
-        cookieClicks.removeChild(particle); /* fjerner billedet fra cookie-clicks */
-    }, 3000); /* 3000 er 3 sekunder */
-} 
+    if(storage.powerups.includes("upgrade-click")) {
+        const multiplier = storage.powerups.filter(powerup => powerup == "upgrade-click").length;
+        if(multiplier == 1){
+            newScore = scoreValue + 2;
+        } else {
+            newScore = scoreValue + (2 ** multiplier)
+        }
+    } else {
+        newScore = scoreValue + 1;
+    }
 
-/* opretter powerups */
-cookie.addEventListener("click", (e) => { /* e er eventet */
-    createParticle(e.clientX, e.clientY) /* sender musens x og y koordinater med til createParticle */
-    cookieClicked() /* sender scoren med til cookieClicked */
+    updateScore(newScore);
+}
+
+const createParticle = (x,y) => {
+    const cookieClicks = document.querySelector(".cookie-clicks");
+
+    const particle = document.createElement("img");
+    particle.setAttribute("src", "img/cookie.png");
+    particle.setAttribute("class", "cookie-particle");
+    particle.style.left = x + "px";
+    particle.style.top = y + "px";
+
+    cookieClicks.appendChild(particle);
+
+
+    setTimeout(() => {
+        cookieClicks.removeChild(particle);
+    }, 3000);
+}
+
+cookie.addEventListener("click", (e) => {
+    createParticle(e.clientX, e.clientY);
+    cookieClicked()
 });
 
+const autoClickCookie = () => {
+    setInterval(() => {
+        const score = document.querySelector("#score span");
+        const scoreValue = parseInt(score.innerText);
 
-const autoClickCookie = () => { /* opretter en cookie hvert sekund */
-    setInterval(() => { /* kører hvert sekund */
-        const score = document.querySelector("#score span");  /* henter scoren */
-        const scoreValue = parseInt(score.innerText); /* laver scoren om til et tal */
-        newScore = scoreValue + 1; /* ligger 1 til scoren */
+        newScore = scoreValue + 1;
 
-        updateScore(newScore); /* opdaterer scoren hver 1 sekund */
-    }, 1000) /* 1000 er 1 sekund */
+        updateScore(newScore);
+    }, 1000)
 }
 
-/* opretter powerups */
-autoClick.addEventListener("click", () => {  /* opretter en cookie hvert sekund */
-    const price = autoClick.getAttribute("data-price"); /* henter prisen på poweruppen */
-    const score = document.querySelector("#score span");  /* henter scoren */
-    const scoreValue = parseInt(score.innerText); /* laver scoren om til et tal */
+autoClick.addEventListener("click", () => {
+    const price = autoClick.getAttribute("data-price");
+    const score = document.querySelector("#score span");
+    const scoreValue = parseInt(score.innerText)
 
-    if (scoreValue >= price) { /* prisen på poweruppen skal være mindre end eller lig med scoren */
-       updatePowerupsStorage("auto-click"); /* opdaterer powerups i localstorage */
+    if (scoreValue >= price) {
+        updatePowerupsStorage("auto-click");
 
-       const storage = getStorage(); /* henter cookie storage */
-       const quantAutoClicks = storage.powerup.filter(powerup => powerup == "auto-click").length; /* tæller antallet af auto-clicks */
-    
-    
-       /* opdaterer prisen på powerups, fortæller hvis man ikke har nok cookies til en opdraring */
-     const newScore = scoreValue - price; /* ligger prisen til scoren */
-    } else { /* ellers */
-        autoClick.classList.add("fejl") /* tilføjer fejl classen */
-        setTimeout(() => { /* fjerner fejl classen efter 3 sekunder */
-            autoClick.classList.remove("fejl") /* fjerner fejl classen */
-        }, 300); /* 300 er 0,3 sekunder */
+        const storage = getStorage();
+        const quantAutoClicks = storage.powerups.filter(powerup => powerup == "auto-click").length;
+
+        const newScore = scoreValue - price;
+
+        updateScore(newScore)
+
+        if(quantAutoClicks == 1) {
+            autoClick.setAttribute("data-price", 100 * 2);
+            autoClickTextPrice.innerHTML = 100 * 2;
+        } else {
+            autoClick.setAttribute("data-price", 100 * (quantAutoClicks + 1));
+            autoClickTextPrice.innerHTML = 100 * (quantAutoClicks + 1);
+        }
+
+        document.querySelector(".auto-clicks").classList.remove("disable");
+
+        document.querySelector(".auto-clicks .cursors").innerHTML += '<img src="img/cursor.png" alt="cursor" id="cursor" class="cursor auto">'
+
+        autoClickCookie();
+    } else {
+        autoClick.classList.add("fejl")
+        setTimeout(() => {
+            autoClick.classList.remove("fejl")
+        }, 300);
+    }
+})
+
+upgradeClick.addEventListener("click", () => {
+    const price = upgradeClick.getAttribute("data-price");
+    const score = document.querySelector("#score span");
+    const scoreValue = parseInt(score.innerText)
+
+    if (scoreValue >= price) {
+        updatePowerupsStorage("upgrade-click");
+
+        const storage = getStorage();
+        const multiplier = storage.powerups.filter(powerup => powerup == "upgrade-click").length;
+
+        const newScore = scoreValue - price;
+
+        updateScore(newScore)
+
+        if(multiplier == 1) {
+            upgradeClick.setAttribute("data-price", 100 * 2);
+            upgradeClickTextPrice.innerHTML = 100 * 2;
+        } else {
+            upgradeClick.setAttribute("data-price", 100 * (2 ** multiplier));
+            upgradeClickTextPrice.innerHTML = 10 * (2 ** multiplier);
+        }
+    } else {
+        upgradeClick.classList.add("fejl")
+        setTimeout(() => {
+            upgradeClick.classList.remove("fejl")
+        }, 300);
     }
 })
 
 
+    if (storage.powerups.includes("upgrade-click")) {
+        const multiplier = storage.powerups.filter(powerup => powerup == "upgrade-click").length;
 
+        if(multiplier == 1) {
+            upgradeClick.setAttribute("data-price", 10 * 2);
+            upgradeClickTextPrice.innerHTML = 10 * 2;
+        } else {
+            upgradeClick.setAttribute("data-price", 10 * (2 ** multiplier));
+            upgradeClickTextPrice.innerHTML = 10 * (2 ** multiplier);
+        }
+    }
+
+    if(storage.powerups.includes("auto-click")) {
+        const quantAutoClicks = storage.powerups.filter(powerup => powerup == "auto-click").length;
+
+        document.querySelector(".auto-clicks").classList.remove("disable")
+
+        if(quantAutoClicks == 1) {
+            autoClick.setAttribute("data-price", 10 * 2);
+            autoClickTextPrice.innerHTML = 10 * 2;
+        } else {
+            autoClick.setAttribute("data-price", 10 * (quantAutoClicks + 1));
+            autoClickTextPrice.innerHTML = 10 * (quantAutoClicks + 1);
+        }
+
+        for (i=1;i <= quantAutoClicks; i++) {
+            autoClickCookie();
+
+            document.querySelector(".auto-clicks").classList.remove("disable");
+            document.querySelector(".auto-clicks .cursors").innerHTML += '<img src="img/cursor.png" alt="cursor" id="cursor" class="cursor auto">'
+
+        }
+    }
