@@ -35,5 +35,3 @@ const cookieClicked = cookies => {
 
     updateScore(newScore);
 }
-
-
