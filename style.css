@@ -93,7 +93,7 @@
     color: aquamarine;
 }
 
-.invalid{
+.fejl{
     border: 2px solid red;
     animation: error .3s linear infinite;
 }
@@ -128,7 +128,7 @@
     width: 80px;
 }
 
-/* cookie text */
+/* cookie tekst */
 @keyframes rotates { /* cookie roterer */
     from {
         transform: rotate(0);
