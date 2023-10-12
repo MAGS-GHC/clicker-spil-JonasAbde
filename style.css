@@ -33,7 +33,6 @@
 .cookie-container { /* cookie container */
     height: 320px; /* cookie container højde */
 }
-
 /* cookie */
 .cookie{
     width: 300px;
@@ -53,7 +52,7 @@
     left: 30px;
     word-spacing: 10px;
     pointer-events: none;
-    animation: cookie-up 5s linear forwards;
+    animation: cookie-up 2s linear forwards;
 }
 
 .powerups{
@@ -80,31 +79,30 @@
     background-color:#fff; 
 }
 
-.powerup:active {
+/* powerup:hover */
+.powerup:active{
     transform: scale(.9);
 }
 
-.powerup .name {
+.powerup .name{
     font-size: 1.3rem;
     font-weight: bold;
 }
 
-.powerup .price {
+.powerup .price{
     font-size: 1.1rem;
-    color: rgb(0, 0, 0);
+    color: rgb(0, 5, 3);
 }
 
-.cursor.auto-click {
+.fejl{
+    border: 2px solid red;
+    animation: error .3s linear infinite;
+}
+
+.cursor.auto-click{
     width: 80px;
     transform: rotate(28deg);
     padding-top: 10px;
-}
-
-
-
-.fejl {
-    border: 2px solid red;
-    animation: error .3s linear infinite;
 }
 
 .disable {
@@ -114,31 +112,25 @@
 .auto-clicks h2 {
     font-size: 2rem;
     font-weight: bold;
-    text-shadow: 0 0 10px #ededed;
+    text-shadow: 0 0 10px #0000;
     text-align: center;
-    color: rgb(249, 247, 247);
+    color: white;
     padding: 10px 0;
 }
 
-.auto-clicks {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: visible;
-    width: 100%;
-}
-
 .cursor.auto {
-    animation: clickEffect .5s;
+    animation: clickEffect .5s ease alternate infinite;
 }
 
-.cursor {
-    width: 100px;
+
+
+
+.cursor{
+    width: 80px;
 }
 
-/* Keyframes */
-
-@keyframes rotates {
+/* cookie tekst */
+@keyframes rotates { /* cookie roterer */
     from {
         transform: rotate(0);
     }
