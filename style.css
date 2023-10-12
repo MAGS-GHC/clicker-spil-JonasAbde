@@ -1,32 +1,33 @@
 
-/* reset */
+/* General  */
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Courier New', Courier, monospace;
-    overflow: hidden;
-    user-select: none;
+    margin: 0; /* fjerner margin */
+    padding: 0; /* fjerner padding */
+    font-family: 'Courier New', Courier, monospace; /* font */
+    overflow: hidden; /* fjerner scroll */
+    user-select: none; /* fjerner markering */
 }
-/* container */
-.container { 
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 0px;
-    padding: 20px 0;
+
+/* boks */
+.container {  /* boks */
+    height: 100vh; /* boks højde */
+    display: flex; /* flex */
+    justify-content: center; /* center */
+    align-items: center; /* center */
+    flex-direction: column; /* flex direction */
+    gap: 0px; /* gap */
+    padding: 20px 0; /* padding */
 }
 
 
 /* score */
-.score{
-    font-size: 6rem;
-    font-weight: BOLD;
-    text-shadow: 0 0 15px rgb(255, 255, 255);
-    width: 100%;
-    text-align: center;
-    color: white;
+.score{ /* score */
+    font-size: 6rem; /* font størrelse */
+    font-weight: BOLD; /* font vægt */
+    text-shadow: 0 0 15px rgb(255, 255, 255); /* tekst skygge */
+    width: 100%; /* bredde */
+    text-align: center; /* tekst align */
+    color: white; /* farve */
 }
 
 /* cookie-container */
@@ -35,151 +36,152 @@
 }
 
 /* cookie */
-.cookie{
-    width: 300px;
-    cursor: pointer;
-    filter: drop-shadow(0 0 px white);
-    animation: rotates 10s linear infinite;
+.cookie{ /* cookie */
+    width: 300px; /* cookie bredde */
+    cursor: pointer; /* cursor */
+    filter: drop-shadow(0 0 px white); /* filter */
+    animation: rotates 10s linear infinite; /* animation */
 }
 /* cookie:hover */
-.cookie:active {
-    width: 280px;
+.cookie:active { /* cookie hover */
+    width: 280px; /* cookie bredde */
 }   
 
-.cookie-particle {
-    width: 50px;
-    position: absolute;
-    top: -30px;
-    left: 30px;
-    word-spacing: 10px;
-    pointer-events: none;
-    animation: cookie-up 5s linear forwards;
+/* cookie-effekt */
+.cookie-particle { /* cookie effekt */
+    width: 50px; /* cookie effekt bredde */
+    position: absolute; /* position */
+    top: -30px; /* top */
+    left: 30px; /* left */
+    word-spacing: 10px; /* word spacing */
+    pointer-events: none; /* pointer events */
+    animation: cookie-up 5s linear forwards; /* animation */
 }
 
-.powerups{
-    width: 100%;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    gap: 50px;
+.powerups{ /* powerups */
+    width: 100%; /* powerups bredde */
+    height: 200px; /* powerups højde */
+    display: flex; /* flex */
+    align-items: center; /* center */
+    justify-content: center; /* center */
+    margin-bottom: 20px; /* margin bund */
+    gap: 50px; /* gap */
 }
 
 /* powerup */
-.powerup{
-    width: 150px;
-    height: 160px;
-    border: 2px solid;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    border-radius: 10px;
-    background-color:#fff; 
+.powerup{ /* powerup */
+    width: 150px; /* powerup bredde */
+    height: 160px; /* powerup højde */
+    border: 2px solid; /* border */
+    cursor: pointer;    /* cursor */
+    display: flex; /* flex */
+    flex-direction: column; /* flex direction */
+    justify-content: space-evenly;  /* center */
+    align-items: center; /* center */
+    border-radius: 10px; /* border raidus */
+    background-color:#fff;  /* baggrundsfarve */
 }
 
-.powerup:active {
-    transform: scale(.9);
+.powerup:active { /* powerup flyver */
+    transform: scale(.9); /* transform */
 }
 
-.powerup .name {
-    font-size: 1.3rem;
-    font-weight: bold;
+.powerup .name { /* powerup navn */
+    font-size: 1.3rem; /* font størrelse */
+    font-weight: bold; /* font vægt */
 }
 
-.powerup .price {
-    font-size: 1.1rem;
-    color: rgb(0, 0, 0);
+.powerup .price { /* powerup pris */
+    font-size: 1.1rem; /* font størrelse */
+    color: rgb(0, 0, 0); /* farve */
 }
 
-.cursor.auto-click {
-    width: 80px;
-    transform: rotate(28deg);
-    padding-top: 10px;
+.cursor.auto-click { /* cursor auto click */
+    width: 80px; /* cursor bredde */
+    transform: rotate(28deg); /* transform */
+    padding-top: 10px; /* padding top */
 }
 
 
 
-.fejl {
-    border: 2px solid red;
-    animation: error .3s linear infinite;
+.fejl { /* fejl rød firkant */
+    border: 2px solid red; /* border */
+    animation: error .3s linear infinite; /* animation */
 }
 
-.disable {
-    display: none;
+.disable { /* disable */
+    display: none; /* display none */
 }
 
-.auto-clicks h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    text-shadow: 0 0 10px #ededed;
-    text-align: center;
-    color: rgb(249, 247, 247);
-    padding: 10px 0;
+.auto-clicks h2 { /* auto clicks h2 */
+    font-size: 2rem; /* font størrelse */
+    font-weight: bold; /* font vægt */
+    text-shadow: 0 0 10px #ededed; /* tekst skygge */
+    text-align: center; /* tekst align */
+    color: rgb(249, 247, 247); /* farve */
+    padding: 10px 0; /* padding */
 }
 
-.auto-clicks {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: visible;
-    width: 100%;
+.auto-clicks { /* auto clicks */
+    display: flex; /* flex */
+    flex-direction: column; /* flex vej */
+    align-items: center; /* center */
+    overflow-y: visible; /* overflow y */
+    width: 100%; /* bredde */
 }
 
-.cursor.auto {
-    animation: clickEffect .5s;
+.cursor.auto { /* cursor auto */
+    animation: clickEffect .5s; /* animation */
 }
 
-.cursor {
-    width: 100px;
+.cursor { /* cursor */
+    width: 100px; /* cursor bredde */
 }
 
 /* Keyframes */
 
-@keyframes rotates {
-    from {
-        transform: rotate(0);
+@keyframes rotates { /* keyframes rotates */
+    from { /* fra */
+        transform: rotate(0); /* transform */
     }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes cookie-up {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-        top: 0;
+    to { /* til */
+        transform: rotate(360deg); /* transform */
     }
 }
 
-@keyframes clickEffect {
-    to {
-        transform: rotate(28deg) scale(.8);
+@keyframes cookie-up { /* keyframes cookie up */
+    from { /* fra */
+        opacity: 1; /* opacity */
     }
-    from {
-        transform: rotate(28deg) scale(.7);
+    to { /* til */
+        opacity: 0; /* opacity */
+        top: 0; /* top */
     }
 }
 
-@keyframes error {
-    20% {
-        transform: translateX(10px);
+@keyframes clickEffect { /* keyframes click effect */
+    to { /* til */
+        transform: rotate(28deg) scale(.8); /* transform */
     }
-    40% {
-        transform: translateX(0);
+    from { /* fra */
+        transform: rotate(28deg) scale(.7); /* transform */
+    } 
+} 
+
+@keyframes error { /* keyframes error */
+    20% { /* 20% */
+        transform: translateX(10px); /* transform */
     }
-    60% {
-        transform: translateX(-10px);
+    40% { /* 40% */
+        transform: translateX(0); /* transform */
     }
-    80% {
-        transform: translateX(0);
+    60% { /* 60% */
+        transform: translateX(-10px); /* transform */
     }
-    100% {
-        transform: translateX(10px);
+    80% { /* 80% */
+        transform: translateX(0); /* transform */
     }
-}
+    100% { /* 100% */
+        transform: translateX(10px); /* transform */
+    } 
+} 
