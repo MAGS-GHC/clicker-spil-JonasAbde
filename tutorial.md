@@ -12,5 +12,4 @@ Klik på cookien for at tjene point.
 Brug pointene til at købe cookies, som automatisk genererer point.
 Brug pointene til at købe opgraderinger, som øger pointgenereringen.
 Gentag trin 2-4 for at tjene flere point og købe flere cookies og opgraderinger.
-Hold øje med specielle begivenheder og præmier, som kan hjælpe dig med at tjene flere point.
 Fortsæt med at spille og se, hvor mange point du kan tjene!

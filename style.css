@@ -14,7 +14,7 @@
     align-items: center; /* center */
     flex-direction: column; /* flex direction */
     gap: 0px; /* gap */
-    padding: 20px 0; /* padding */
+    padding: 30px 0; /* padding */
 }
 
 
@@ -22,7 +22,7 @@
 .score{ /* score */
     font-size: 6rem; /* font størrelse */
     font-weight: BOLD; /* font vægt */
-    text-shadow: 0 0 15px rgb(255, 255, 255); /* tekst skygge */
+    text-shadow: 0 0 0px rgb(255, 255, 255); /* tekst skygge */
     width: 100%; /* bredde */
     text-align: center; /* tekst align */
     color: white; /* farve */
@@ -35,7 +35,7 @@
 
 /* cookie */
 .cookie{ /* cookie */
-    width: 300px; /* cookie bredde */
+    width: 500px; /* cookie bredde */
     cursor: pointer; /* cursor */
     filter: drop-shadow(0 0 px white); /* filter */
     animation: rotates 10s linear infinite; /* animation */
@@ -47,7 +47,7 @@
 
 /* cookie-effekt */
 .cookie-particle { /* cookie effekt */
-    width: 50px; /* cookie effekt bredde */
+    width: 100px; /* cookie effekt bredde */
     position: absolute; /* position */
     top: -30px; /* top */
     left: 30px; /* left */

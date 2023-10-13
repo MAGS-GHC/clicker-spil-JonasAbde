@@ -1,5 +1,7 @@
 
-// for at se koden til de forskellige powerups, så se i app.js, linje 1-100 og linje 100-200 og linje 200-300. samt i index.html, linje 1-100 og linje 100-200 og linje 200-300.
+
+
+// const - bruges til at erklære en variabel med en konstant værdi.
 const cookie = document.querySelector("#cookie"); /* viser antal cookie */
 const autoClick = document.querySelector("#auto-click"); /* viser antal auto-clicks */
 const autoClickTextPrice = document.querySelector("#auto-click .price span"); /* viser prisen på auto-clicks */
@@ -135,7 +137,6 @@ autoClick.addEventListener("click", () => { // tilføjer eventlistener til auto-
     }
 })
 
-// Path: app.js 
 upgradeClick.addEventListener("click", () => { // tilføjer eventlistener til upgrade-click
     const price = upgradeClick.getAttribute("data-price"); // henter prisen på upgrade-clicks
     const score = document.querySelector("#score span"); // henter antal cookies fra html
@@ -166,7 +167,6 @@ upgradeClick.addEventListener("click", () => { // tilføjer eventlistener til up
     }
 })
 
-// Path: app.js
 const getSavedData = () => { /* henter antal cookies og powerups fra localstorage */
     const storage = getStorage(); // henter antal cookies og powerups fra localstorage
 
