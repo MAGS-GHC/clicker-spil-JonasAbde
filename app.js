@@ -7,7 +7,6 @@ const upgradeClick = document.querySelector("#upgrade-click"); /*  viser antal u
 const upgradeClickTextPrice = document.querySelector("#upgrade-click .price span"); /* viser prisen på upgrade-clicks */
 
 
-// Path: app.js
 const updateScore = cookies => { /* opdaterer antal cookies */
     const title = document.querySelector("title"); /* opdaterer titlen på siden */
     const score = document.querySelector("#score span"); /* opdaterer antal cookies */
@@ -88,7 +87,6 @@ cookie.addEventListener("click", (e) => { // tilføjer eventlistener til cookie
 });
 
 
-// Path: app.js
 const autoClickCookie = () => { /* opretter en cookie particle */
     setInterval(() => { // opretter en cookie particle hvert sekund
         const score = document.querySelector("#score span");    // henter antal cookies fra html
